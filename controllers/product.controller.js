@@ -33,8 +33,8 @@ const create = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const { name, price, description, stock } = req.body;
-    const result = await Product.findByIdAndUpdate(req.params.id, { name, price, description, stock, brand, color }, { new:true });
+    const { modelskate, price, description, stock, brand, color } = req.body;
+    const result = await Product.findByIdAndUpdate(req.params.id, { modelskate, price, description, stock, brand, color }, { new:true });
     res.json(result);
   } catch (error) {
     console.error(error);
