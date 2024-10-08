@@ -8,7 +8,7 @@ const swaggerOptions = {
     definition: {
       openapi: "3.0.0",
       info: {
-        title: "Skateshop API",
+        title: "Pizza Restaurant API",
         version: "1.0.0",
       },
       servers: [
@@ -28,8 +28,8 @@ const swaggerOptions = {
     },
     apis: [`${path.join(__dirname, "./routes/*.js")}`],
   };
-  
-  const swaggerDocs = swaggerJsDoc(swaggerOptions);  
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);  
 
 const app = express();
 
@@ -46,5 +46,5 @@ app.use(process.env.URL_BASE + "/", routes);
 connectDB();
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log(`listen in port ${process.env.PORT}`);
+    console.log(`listen in port ${process.env.PORT}`);
 });
