@@ -1,6 +1,7 @@
 # Proyecto 6
 
 Skateshop - Tienda de venta de skates
+
 Este proyecto consiste en la construcción de una aplicación backend para una tienda ficticia de skates (Skateshop) y contempla:
 - Autenticación de usuarios
 - Autorización de usuarios
