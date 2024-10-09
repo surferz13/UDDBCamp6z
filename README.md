@@ -9,6 +9,7 @@ Este proyecto consiste en la construcción de una aplicación backend para una t
 - Render para el despliegue
 
 Estructura del proyecto:
+
 ![image](https://github.com/user-attachments/assets/2674e67a-517e-4356-9015-f44ff312aebe)
 
 Documentación en Swagger: http://localhost:3000/api-docs/
