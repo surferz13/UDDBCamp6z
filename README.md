@@ -17,3 +17,7 @@ Documentación en Swagger:
 http://localhost:3000/api-docs/
 ![image](https://github.com/user-attachments/assets/692df2bc-a102-4a3e-a75c-b4c5d5be97bd)
 
+Evidencia de creación de productos exitosa:
+![image](https://github.com/user-attachments/assets/44cab376-0079-40b6-bef3-eb4830d5c792)
+
+![image](https://github.com/user-attachments/assets/da425e8e-ba0c-47c3-97a9-6d481f3a3b8b)
