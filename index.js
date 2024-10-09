@@ -8,14 +8,15 @@ const swaggerOptions = {
     definition: {
       openapi: "3.0.0",
       info: {
-        title: "Pizza Restaurant API",
+        title: "Skate Shop API",
         version: "1.0.0",
       },
       servers: [
         {
-          url: serverUrl,
-        },
-      ],
+            url: "http://localhost:3000/api",
+            description: "Local server"
+        }
+    ],
       components: {
         securitySchemes: {
           ApiKeyAuth: {
@@ -26,7 +27,7 @@ const swaggerOptions = {
         },
       },
     },
-    apis: [`${path.join(__dirname, "./routes/*.js")}`],
+    apis: ["./routes/*.js"],
   };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);  
@@ -38,7 +39,7 @@ require("dotenv").config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.use("/", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 const routes = require("./routes");
 app.use(process.env.URL_BASE + "/", routes);

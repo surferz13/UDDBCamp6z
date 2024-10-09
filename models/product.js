@@ -1,28 +1,19 @@
 const mongoose = require("mongoose");
 const productSchema = mongoose.Schema({
-  modelskate: {
+  id: {
     type: String,
     require: true,
   },
-  price: {
-    type: Number,
+  name: {
+    type: String,
     require: true,
   },
   description: {
     type: String,
     require: false,
   },
-  stock: {
+  price: {
     type: Number,
-    require: true,
-    default: 0,
-  },
-  brand: {
-    type: String,
-    require: true,
-  },
-  color: {
-    type: String,
     require: true,
   }
 

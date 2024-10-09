@@ -22,8 +22,8 @@ const findOne = async (req, res) => {
 
 const create = async (req, res) => {
   try {
-    const { name, price, description, stock } = req.body;
-    const result = await Product.create({ name, price, description, stock, brand, color });
+    const { id, name, description, price } = req.body;
+    const result = await Product.create({ id, name, description, price });
     res.json(result);
   } catch (error) {
     console.error(error);
@@ -33,8 +33,8 @@ const create = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const { modelskate, price, description, stock, brand, color } = req.body;
-    const result = await Product.findByIdAndUpdate(req.params.id, { modelskate, price, description, stock, brand, color }, { new:true });
+    const { id, name, description, price } = req.body;
+    const result = await Product.findByIdAndUpdate(req.params.id, { id, name, description, price }, { new:true });
     res.json(result);
   } catch (error) {
     console.error(error);

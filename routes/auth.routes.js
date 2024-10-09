@@ -12,7 +12,7 @@ const { signup, signin } = require("../controllers/auth.controller");
 
 /**
  * @swagger
- * /auth/signup:
+ * /signup:
  *   post:
  *     summary: Crear a un nuevo usuario
  *     tags: [Auth]
@@ -37,7 +37,7 @@ router.post("/signup", signup);
 
 /**
  * @swagger
- * /auth/signin:
+ * /signin:
  *   post:
  *     summary: Login a user
  *     tags: [Auth]

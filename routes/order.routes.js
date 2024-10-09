@@ -8,7 +8,7 @@ const { findAll, findOne, create, update, remove } = require("../controllers/ord
  * @swagger
  * tags:
  *   name: Orders
- *   description: The orders managing API
+ *   description: Gestión de ordenes de compra
  */
 
 /**

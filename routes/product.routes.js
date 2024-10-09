@@ -1,3 +1,10 @@
+/**
+ * @swagger
+ * tags:
+ *   name: Products
+ *   description: Gestión de venta de skates
+ */
+
 const express = require("express");
 const router = express.Router();
 
@@ -5,143 +12,158 @@ const { findAll, findOne, create, update, remove } = require("../controllers/pro
 
 /**
  * @swagger
- * components:
- *  schemas:
- *    Skates:
- *      modelskate: 
- *          type: string
- *        price:
- *          type: number
- *        description:
- *          type: string
- *          stock:
- *            type: number
- *              brand:
- *                type: string
- *              color:
- *                type: string
- *      example:
- *        skates: [
- *          {
- *            "modelskate": "Shortboard",
- *            "price": 18900,
- *            "description": "incluye deck, rodamientos y ruedas.",
- *            "stock": 27,
- *            "brand": "Element",
- *            "color": "Negro", 
- *          },
- *          {
-  *            "modelskate": "Longboard",
- *            "price": 58900,
- *            "description": "incluye deck, rodamientos y ruedas.",
- *            "stock": 12,
- *            "brand": "Emerica",
- *            "color": "Blanco",
- *          }
- *        ]
- */
-
-/**
- * @swagger
- * /api/skates/readall:
+ * /products:
  *   get:
- *     summary: Obtiene todas loss skates disponibles
- *     tags: [Skates]
+ *     summary: Obtener todos los skates
+ *     tags: [Products]
+ *     description: Obtener una lista de los skates
  *     responses:
  *       200:
- *         description: Lista de todas los skates
- *       400:
- *         description: Error al obtener los skates
+ *         description: Lista de skates disponibles
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Product'
  */
-
 router.get("/", findAll);
 
 /**
  * @swagger
- * /api/skates/readone/{slug}:
+ * /products/{id}:
  *   get:
- *     summary: Obtiene una skate por slug
- *     tags: [Skates]
- *     parameters:
- *       - in: path
- *         name: slug
- *         schema:
- *           type: string
- *         required: true
- *         description: Slug del skate
- *     responses:
- *       200:
- *         description: Datos del skate
- *       400:
- *         description: Error al obtener el skate
- */
-router.get("/:id", findOne);
-/**
- * @swagger
- * /api/skates/create:
- *   post:
- *     summary: Crea un nuevo skate
- *     tags: [Skates]
- *     requestBody:
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Skate'
- *     responses:
- *       200:
- *         description: El skate se creó con éxito
- *       400:
- *         description: Error al crear el skate
- */
-
-router.post("/", create);
-
-/**
- * @swagger
- * /api/skates/{id}:
- *   put:
- *     summary: Actualiza un skate por ID
- *     tags: [Skates]
+ *     summary: Obtener un producto por su ID
+ *     tags: [Products]
+ *     description: Obtener el skate especifico por su ID
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: ID del skate a actualizar
+ *         description: El ID del skate buscado
+ *     responses:
+ *       200:
+ *         description: Skate obtenido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
+ *       404:
+ *         description: No fue posible encontrar el producto
+ */
+router.get("/:id", findOne);
+
+/**
+ * @swagger
+ * /products:
+ *   post:
+ *     summary: Crear un nuevo producto
+ *     tags: [Products]
+ *     description: Crear un nuevo producto
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Skate'
+ *             $ref: '#/components/schemas/Product'
  *     responses:
- *       200:
- *         description: El skate se actualizó con éxito
+ *       201:
+ *         description: Producto creado con éxito
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
  *       400:
- *         description: Error al actualizar el skate
+ *         description: No fue posible hacer la creación
  */
-router.put("/:id", update);
+router.post("/", create);
 
 /**
  * @swagger
- * /api/skates/{id}:
- *   delete:
- *     summary: Elimina un skate por ID
- *     tags: [Skates]
+ * /products/{id}:
+ *   put:
+ *     summary: Actualizar un producto por su ID
+ *     tags: [Products]
+ *     description: Actualizar un producto
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
  *           type: string
  *         required: true
- *         description: ID del skate a eliminar
+ *         description: El ID del producto a actualizar
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Product'
  *     responses:
  *       200:
- *         description: El skate se eliminó con éxito
+ *         description: Producto actualizado con éxito
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Product'
  *       400:
- *         description: Error al eliminar el skate
+ *         description: No fue posible actualizar la info
+ *       404:
+ *         description: Producto no encontrado
+ */
+router.put("/:id", update);
+
+/**
+ * @swagger
+ * /products/{id}:
+ *   delete:
+ *     summary: Eliminar producto por su ID
+ *     tags: [Products]
+ *     description: Eliminar un producto existente por su ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: El ID del producto a eliminar
+ *     responses:
+ *       200:
+ *         description: Producto eliminado con éxito
+ *       404:
+ *         description: Producto no encontrado
  */
 router.delete("/:id", remove);
 
 module.exports = router;
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Product:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *           description: El ID unico del producto
+ *         name:
+ *           type: string
+ *           description: El nombre del producto
+ *         description:
+ *           type: string
+ *           description: La descripción del producto
+ *         price:
+ *           type: number
+ *           description: El precio del producto
+ *       required:
+ *         - name
+ *         - description
+ *         - price
+ *       example:
+ *         id: "123e4567-e89b-12d3-a456-426614174000"
+ *         name: "Skate Shortboard"
+ *         description: "Skate de tipo urbano y de velocidad"
+ *         price: 9.99
+ */
