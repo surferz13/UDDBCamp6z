@@ -12,6 +12,7 @@ Estructura del proyecto:
 
 ![image](https://github.com/user-attachments/assets/2674e67a-517e-4356-9015-f44ff312aebe)
 
-Documentación en Swagger: http://localhost:3000/api-docs/
+Documentación en Swagger:
+http://localhost:3000/api-docs/
 ![image](https://github.com/user-attachments/assets/692df2bc-a102-4a3e-a75c-b4c5d5be97bd)
 
