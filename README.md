@@ -7,7 +7,6 @@ Este proyecto consiste en la construcción de una aplicación backend para una t
 - Autorización de usuarios
 - Mongoose y MongoDB para los modelos de datos; usuario, producto y ordenes de compra
 - Swagger para la documentación de la aplicación
-- Render para el despliegue
 
 Estructura del proyecto:
 
